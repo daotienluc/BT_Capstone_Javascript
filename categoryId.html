@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Category</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <!-- FontAwesome 6.2.0 CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+      integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <!-- Bootstrap CSS v5.2.1 -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+
+    <link rel="stylesheet" href="./sass/index.css" />
+  </head>
+
+  <body>
+    <!-- Header -->
+    <header>
+      <nav class="navbar navbar-expand-lg bg-white">
+        <div class="container">
+          <a class="navbar-brand fw-bold" href="./index.html">PoleonShop</a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Promo</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link dropdown-toggle"
+                  href="#"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  Category
+                </a>
+                <ul id="dataAllCategory" class="dropdown-menu"></ul>
+              </li>
+            </ul>
+            <form class="d-flex" role="search">
+              <input
+                class="me-2 bg-body-tertiary navbar_search"
+                type="search"
+                placeholder="Search Product"
+                aria-label="Search"
+              />
+              <a href="./Register.html" class="navbar_button_2">Sign Up</a>
+              <button class="navbar_button_1" style="margin-left: 10px">
+                Login
+              </button>
+            </form>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <!-- Banner -->
+    <section class="banner">
+      <div class="banner_bg"></div>
+    </section>
+
+    <!-- Bộ lọc -->
+    <section class="filter my-4">
+      <div class="container d-flex justify-content-between">
+        <div class="filter_content">
+          <select name="" id="" class="p-2 me-3">
+            <option value="">Price</option>
+          </select>
+
+          <select name="" id="" class="p-2 me-3">
+            <option value="">Material</option>
+          </select>
+
+          <select name="" id="" class="p-2 me-3">
+            <option value="">Color</option>
+          </select>
+
+          <select name="" id="" class="p-2 me-3">
+            <option value="">Features</option>
+          </select>
+
+          <select name="" id="" class="p-2 me-3">
+            <option value="">Date of Entry</option>
+          </select>
+
+          <select name="" id="" class="p-2 me-3">
+            <option value="">Display</option>
+          </select>
+        </div>
+        <div class="filter_btn d-flex">
+          <div class="filter_all d-flex align-items-center px-4 me-4">
+            <i class="me-2 fa-solid fa-filter"></i>
+            <p class="mb-0">All Filter</p>
+          </div>
+
+          <div class="filter_all d-flex align-items-center px-4">
+            <i class="me-2 fa-solid fa-sort"></i>
+            <p class="mb-0">Sort By</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Detail -->
+    <section class="detail pb-5" style="margin-top: 30px">
+      <div class="container">
+        <h2 class="py-4">Category Page</h2>
+        <div class="top_product">
+          <div class="top_product_content">
+            <div id="dataContent" class="row"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Bootstrap JavaScript Libraries -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+      integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+      crossorigin="anonymous"
+    ></script>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+      integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
+      crossorigin="anonymous"
+    ></script>
+
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.7.7/axios.min.js"
+      integrity="sha512-DdX/YwF5e41Ok+AI81HI8f5/5UsoxCVT9GKYZRIzpLxb8Twz4ZwPPX+jQMwMhNQ9b5+zDEefc+dcvQoPWGNZ3g=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+
+    <script src="./js/categoryId.js"></script>
+  </body>
+</html>
