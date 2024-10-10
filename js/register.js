@@ -1,66 +1,64 @@
 document
   .getElementById("formRegister")
-  .addEventListener("submit", function (event) {
+  .addEventListener("submit", async function (event) {
     event.preventDefault();
 
-    const fullName = document
-      .getElementById("exampleInputUsername")
-      .value.trim();
-    const email = document.getElementById("exampleInputEmail").value.trim();
-    const password = document
-      .getElementById("exampleInputPassword")
-      .value.trim();
-    const confirmPassword = document
-      .getElementById("exampleInputConfirmPassword")
-      .value.trim();
+    // Lấy các phần tử input từ form
+    let inputElements = [
+      document.getElementById("exampleInputEmail"),
+      document.getElementById("exampleInputUsername"),
+      document.getElementById("exampleInputPassword"),
+      document.getElementById("exampleInputConfirmPassword"),
+    ];
 
-    if (!/^[a-zA-Z\s]+$/.test(fullName)) {
-      toastr.error("Tên đầy đủ chỉ được chứa các chữ cái và dấu cách");
-      return;
-    }
+    let isValid = true;
 
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-      toastr.error("Định dạng Email không hợp lệ");
-      return;
-    }
+    inputElements.forEach((inputElement) => {
+      let inputValue = inputElement.value;
+      let errorSpan = inputElement.nextElementSibling;
+      if (!checkEmptyValue(errorSpan, inputValue)) {
+        isValid = false;
+      } else {
+        let dataValue = inputElement.getAttribute("data-validation");
+        console.log(dataValue);
+        if (dataValue === "email" && !checkEmailValue(errorSpan, inputValue)) {
+          isValid = false;
+        } else if (
+          (dataValue === "minMax" &&
+            !checkPassWordValue(errorSpan, inputValue)) ||
+          (dataValue === "minMax" &&
+            !checkMinMaxValue(errorSpan, inputValue, 6, 10))
+        ) {
+          isValid = false;
+        }
+      }
+    });
 
-    if (password.length < 8) {
-      toastr.error("Mật khẩu phải ít nhất 8 ký tự");
-      return;
-    }
-    if (!/[A-Za-z]/.test(password) || !/[0-9]/.test(password)) {
-      toastr.error("Mật khẩu phải có cả chữ và số");
-      return;
-    }
+    if (isValid) {
+      const user = {
+        email: document.getElementById("exampleInputEmail").value,
+        password: document.getElementById("exampleInputPassword").value,
+        name: document.getElementById("exampleInputUsername").value,
+      };
 
-    if (password !== confirmPassword) {
-      toastr.error("Mật khẩu không khớp");
-      return;
-    }
+      try {
+        const response = await axios.post(
+          "https://shop.cyberlearn.vn/api/Users/signup",
+          user,
+          {
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
+        );
 
-    const user = {
-      email: email,
-      password: password,
-      name: fullName,
-    };
-
-    $.ajax({
-      url: "https://shop.cyberlearn.vn/api/Users/signup",
-      type: "POST",
-      contentType: "application/json",
-      data: JSON.stringify(user),
-      success: function (response) {
-        toastr.success("Registration successful");
-        console.log(response);
-        // setTimeout(() => {
-        //   window.location.href = "index.html";
-        // }, 2000);
-      },
-      error: function (error) {
+        toastr.success("Đăng ký tài khoản thành công !");
+      } catch (error) {
         const errorMessage =
-          error.responseJSON?.message || "Đăng ký không thành công";
+          error.response?.data?.message ||
+          "Đang có lỗi xảy ra, vui lòng thử lại";
         toastr.error(errorMessage);
         console.error(error);
-      },
-    });
+      }
+    }
   });

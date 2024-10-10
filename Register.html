@@ -31,17 +31,39 @@
       <div class="mb-3">
         <label for="exampleInputUsername" class="form-label">Full Name</label>
         <input type="text" class="form-control" id="exampleInputUsername" />
-        <span id="textFullName" class=""></span>
+        <span
+          id="thongBaoFullName"
+          class="text-danger"
+          style="font-size: 14px"
+        ></span>
       </div>
       <div class="mb-3">
         <label for="exampleInputEmail" class="form-label">Email address</label>
-        <input type="text" class="form-control" id="exampleInputEmail" />
-        <span id="textEmail" class=""></span>
+        <input
+          type="text"
+          class="form-control"
+          id="exampleInputEmail"
+          data-validation="email"
+        />
+        <span
+          id="thongBaoEmail"
+          class="text-danger"
+          style="font-size: 14px"
+        ></span>
       </div>
       <div class="mb-3">
         <label for="exampleInputPassword" class="form-label">Password</label>
-        <input type="password" class="form-control" id="exampleInputPassword" />
-        <span id="textPassword" class=""></span>
+        <input
+          type="password"
+          class="form-control"
+          id="exampleInputPassword"
+          data-validation="minMax"
+        />
+        <span
+          id="thongBaoPassword"
+          class="text-danger"
+          style="font-size: 14px"
+        ></span>
       </div>
       <div class="mb-3">
         <label for="exampleInputConfirmPassword" class="form-label"
@@ -52,13 +74,19 @@
           class="form-control"
           id="exampleInputConfirmPassword"
         />
-        <span id="textConfirmPassword" class=""></span>
+        <span
+          id="textConfirmPassword"
+          class="text-danger"
+          style="font-size: 14px"
+        ></span>
       </div>
-      <button type="submit" class="btn btn-primary">Register</button>
+      <button type="submit" class="btn btn-primary w-100">Register</button>
     </form>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="./Validation/Validation.js"></script>
     <script src="./js/register.js"></script>
   </body>
 </html>
